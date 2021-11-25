@@ -1,6 +1,9 @@
+import Todo from './Todo.js';
+
 export default class TodoApp {
     #args;
     #commands;
+    #todoList = [];
 
     constructor(args) {
         this.#args = args;
@@ -21,6 +24,14 @@ export default class TodoApp {
 
     print(string) {
         console.log(string);
+    }
+
+    init(rawTodos) {
+        rawTodos.forEach((rawTodo) => {
+            this.#todoList.push(new Todo(rawTodo));
+        });
+
+        console.log(this.#todoList)
     }
 
     run() {
